@@ -1,23 +1,19 @@
 # By Sai Ravi Teja Karanam for Coursera: Getting and Cleaning Data (Assignment) 2015 september
 
 run_analysis <- function(){
-  #loading train data
   subject_train = read.table("UCI HAR Dataset/train/subject_train.txt")
   X_train = read.table("UCI HAR Dataset/train/X_train.txt")
   Y_train = read.table("UCI HAR Dataset/train/Y_train.txt")
   
-  #loading test data
   subject_test = read.table("UCI HAR Dataset/test/subject_test.txt")
   X_test = read.table("UCI HAR Dataset/test/X_test.txt")
   Y_test = read.table("UCI HAR Dataset/test/Y_test.txt")
   
-  # loading lookup information
   features <- read.table("UCI HAR Dataset/features.txt", col.names=c("featureId", "featureLabel"))
   activities <- read.table("UCI HAR Dataset/activity_labels.txt", col.names=c("activityId", "activityLabel"))
   activities$activityLabel <- gsub("_", "", as.character(activities$activityLabel))
   includedFeatures <- grep("-mean\\(\\)|-std\\(\\)", features$featureLabel)
   
-  # merge test and training data and then name them
   subject <- rbind(subject_test, subject_train)
   names(subject) <- "subjectId"
   X <- rbind(X_test, X_train)
@@ -27,11 +23,9 @@ run_analysis <- function(){
   names(Y) = "activityId"
   activity <- merge(Y, activities, by="activityId")$activityLabel
   
-  # merge data frames of different columns to form one data table
   data <- cbind(subject, X, activity)
   write.table(data, "merged_tidy_data.txt")
   
-  # create a dataset grouped by subject and activity after applying standard deviation and average calculations
   library(data.table)
   dataDT <- data.table(data)
   calculatedData<- dataDT[, lapply(.SD, mean), by=c("subjectId", "activity")]
