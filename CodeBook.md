@@ -3,10 +3,8 @@ Code Book
 
 This code book includes information about the source data, the transformations performed after collecting the data and some information about the variables of the resulting data sets.
 
-Study Design
-------------
-
-The source data was collected from the [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) to complete an assignment for a Coursera course named Getting and Cleaning Data instructed by Jeff Leek. The assignment involved working with the [data set](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) and producing tidy data representation of the source data. Below is a list of the operations done to achieve the outputs.
+Steps Followed
+--------------
 
 1. Downloaded the data set
 2. Unzipped the data set into my chosen working directory
@@ -22,9 +20,8 @@ The source data was collected from the [UCI Machine Learning Repository](http://
 12. Then applied the mean and standard deviation calculations across the groups
 13. Produced "calculated_tidy_data.txt" as the second expected output
 
-Please refer to [run_analysis.R] (https://github.com/rwstang/Getting-and-Cleaning-Data-Assignment/blob/master/run_analysis.R) for implementation details.
 
-Variables
+Details of the variables
 ---------
 
 - subjectId: 1 to 30 each representing a participant in the study

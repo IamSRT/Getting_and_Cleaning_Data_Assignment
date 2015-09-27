@@ -1,17 +1,17 @@
-# By Raymond Tang for Coursera: Getting and Cleaning Data (Assignment) 2014 April
+# By Sai Ravi Teja Karanam for Coursera: Getting and Cleaning Data (Assignment) 2015 september
 
 run_analysis <- function(){
-  # load test data  
-  subject_test = read.table("UCI HAR Dataset/test/subject_test.txt")
-  X_test = read.table("UCI HAR Dataset/test/X_test.txt")
-  Y_test = read.table("UCI HAR Dataset/test/Y_test.txt")
-  
-  # load training data
+  #loading train data
   subject_train = read.table("UCI HAR Dataset/train/subject_train.txt")
   X_train = read.table("UCI HAR Dataset/train/X_train.txt")
   Y_train = read.table("UCI HAR Dataset/train/Y_train.txt")
   
-  # load lookup information
+  #loading test data
+  subject_test = read.table("UCI HAR Dataset/test/subject_test.txt")
+  X_test = read.table("UCI HAR Dataset/test/X_test.txt")
+  Y_test = read.table("UCI HAR Dataset/test/Y_test.txt")
+  
+  # loading lookup information
   features <- read.table("UCI HAR Dataset/features.txt", col.names=c("featureId", "featureLabel"))
   activities <- read.table("UCI HAR Dataset/activity_labels.txt", col.names=c("activityId", "activityLabel"))
   activities$activityLabel <- gsub("_", "", as.character(activities$activityLabel))
